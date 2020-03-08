@@ -4,10 +4,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestión Académica</title>
+        <title>Carreras</title>
         <link rel="icon" href="Icons/GA1.ico" type="image/x-icon" />
+        <script src="JS/tabla.js" type="text/javascript"></script>
+        <link href="Styles/tabla.css" rel="stylesheet" type="text/css"/>
+
         <script src="JS/menuScript.js" type="text/javascript"></script>
         <link href="Styles/menuCss.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
         <div>
