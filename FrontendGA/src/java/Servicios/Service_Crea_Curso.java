@@ -1,18 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Servicios;
 
 import backendga.modelo.Carrera;
+import backendga.modelo.Curso;
 import backendga.modelo.dao.GestorCarrera;
+import backendga.modelo.dao.GestorCurso;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class Service_Lista_Carrera extends HttpServlet {
+/**
+ *
+ * @author carlos
+ */
+public class Service_Crea_Curso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,29 +33,26 @@ public class Service_Lista_Carrera extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
-
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
         try (PrintWriter out = response.getWriter()) {
 
-            List<Carrera> _Lista_carrera
-                    = GestorCarrera.obtenerInstancia().listarCarreras();
+            GestorCurso g = GestorCurso.obtenerInstancia();
 
-            JSONObject r = new JSONObject();
-            JSONArray _carrera_array_JS = new JSONArray();
+            String _codigo = request.getParameter("codigoCursoF");
+            String _carrera_codigo = request.getParameter("codi_carF");
+            String _anio = request.getParameter("anioF");
+            String _ciclo = request.getParameter("cicloF");
+            String _nombre = request.getParameter("nombreCursoF");
+            String _creditosS = request.getParameter("creditosF");
+            String _hsS = request.getParameter("horaSemanalF");
+            int hs = Integer.parseInt(_hsS);
+            int credi = Integer.parseInt(_creditosS);
 
-            for (Carrera c : _Lista_carrera) {
-                JSONObject pj = new JSONObject();
+            g.insertarCurso(_codigo, _carrera_codigo, _anio, _ciclo, _nombre, credi, hs);
 
-                pj.put("codigo", c.getCodigo());
-                pj.put("titulo", c.getTitulo());
-                pj.put("nombre", c.getNombre());
-
-                _carrera_array_JS.put(pj);
-            }
-            r.put("carreras", _carrera_array_JS);
-            out.print(r);
+            response.sendRedirect("cursoLista.jsp");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

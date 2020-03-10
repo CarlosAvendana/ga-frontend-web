@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servicios;
 
-import backendga.modelo.Carrera;
 import backendga.modelo.Curso;
-import backendga.modelo.dao.GestorCarrera;
 import backendga.modelo.dao.GestorCurso;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,10 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- *
- * @author carlos
- */
 public class Service_Lista_Curso extends HttpServlet {
 
     /**

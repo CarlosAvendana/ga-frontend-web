@@ -23,13 +23,13 @@
                 </div>
                 <div >
                     <form class="form-signin" action="Service_LogIn" method="post" name="loginForm">
-                        
+
                         <label for="username">Usuario</label>
                         <input class="form-styling" type="text" name="user" placeholder=""/>
-                        
+
                         <label for="password">Contraseña</label>
                         <input class="form-styling" type="password" name="pass" placeholder=""/>
-                        
+
                         <div class="btn-animate">
                             <input type="submit" class="btn-signin" value="Ingresar"/>
                         </div>

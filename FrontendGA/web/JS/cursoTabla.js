@@ -9,7 +9,7 @@ function solicitarListaCarreras(origen) {
     }
     ).then(
             (dt) => {
-        datosCarreras = dt;
+        datosCursos = dt;
         console.log(datosCursos);
         cargarTabla();
     }
@@ -76,49 +76,47 @@ function cargarTabla() {
         //--Cuerpo de la tabla
         var tbBody = document.createElement("TBODY");
         table.appendChild(tbBody);
-        for (var i = 0; i < datosCursos.carreras.length; i++) {
+        for (var i = 0; i < datosCursos.cursos.length; i++) {
 
             //primer columna | codigo
             var row = document.createElement("TR");
             var celda = document.createElement("TD");
-            var text = document.createTextNode(
-                    datosCursos.cursos[i].codigo);
+            var text = document.createTextNode(datosCursos.cursos[i].codigo);
             celda.appendChild(text);
             row.appendChild(celda);
-            //segunda columna | titulo
+            //segunda columna | carrera_codigo
             celda = document.createElement("TD");
             text = document.createTextNode(
                     datosCursos.cursos[i].carrera_codigo);
             celda.appendChild(text);
             row.appendChild(celda);
-            //tercer columna | nombre
+            //tercer columna | anio
             celda = document.createElement("TD");
             text = document.createTextNode(
                     datosCursos.cursos[i].anio);
             celda.appendChild(text);
             row.appendChild(celda);
-            
-            //cuarta columna | codigo
-            var row = document.createElement("TR");
-            var celda = document.createElement("TD");
-            var text = document.createTextNode(
+
+            //cuarta columna | ciclo
+            celda = document.createElement("TD");
+            text = document.createTextNode(
                     datosCursos.cursos[i].ciclo);
             celda.appendChild(text);
             row.appendChild(celda);
-            //quinta columna | titulo
+            //quinta columna | nombre
             celda = document.createElement("TD");
             text = document.createTextNode(
                     datosCursos.cursos[i].nombre);
             celda.appendChild(text);
             row.appendChild(celda);
-            //sexta columna | nombre
+            //sexta columna | creditos
             celda = document.createElement("TD");
             text = document.createTextNode(
                     datosCursos.cursos[i].creditos);
             celda.appendChild(text);
             row.appendChild(celda);
-            
-            //septima columna | nombre
+
+            //septima columna | horas_semanales
             celda = document.createElement("TD");
             text = document.createTextNode(
                     datosCursos.cursos[i].horas_semanales);

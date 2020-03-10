@@ -13,7 +13,7 @@
         <script src="JS/cursoTabla.js" type="text/javascript"></script>
 
     </head>
-    <body>
+    <body onload="init();">
         <jsp:directive.include file="mainMenu.jsp" />
         <div 
             <section id="seccion_tabla_curso">
