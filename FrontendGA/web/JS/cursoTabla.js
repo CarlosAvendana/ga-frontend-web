@@ -122,6 +122,22 @@ function cargarTabla() {
                     datosCursos.cursos[i].horas_semanales);
             celda.appendChild(text);
             row.appendChild(celda);
+            
+            //boton de editar
+            celda = document.createElement("TD");
+            var btn = document.createElement("BUTTON");
+            btn.className="myButton";
+            btn .innerHTML=("Editar");
+            celda.appendChild(btn);
+            row.appendChild(celda);
+            //boton de Eliminar
+
+            celda = document.createElement("TD");
+            var btn = document.createElement("BUTTON");
+            btn.className="myButton";
+            btn .innerHTML=("Eliminar");
+            celda.appendChild(btn);
+            row.appendChild(celda);
 
             tbBody.appendChild(row);
         }

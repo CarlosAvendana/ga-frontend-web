@@ -30,7 +30,7 @@ function cargarTabla() {
 
         var table = document.getElementsByTagName("TABLE")[0];
         table.className = "rwd-table";
-        
+
         var tbHead = document.createElement("THEAD");
         var hileraH = document.createElement("TR");
 
@@ -45,10 +45,21 @@ function cargarTabla() {
         var nombre = document.createElement("TH");
         nombre.appendChild(document.createTextNode("Nombre"));
         nombre.setAttribute("onclick", "ordenarTabla(2);");
+        
+//        var edicion = document.createElement("TH");
+//        edicion.appendChild(document.createTextNode("Edicion"));
+//        edicion.setAttribute("onclick", "ordenarTabla(3);");
+//        
+//        var eliminar = document.createElement("TH");
+//        eliminar.appendChild(document.createTextNode("Eliminar"));
+//        eliminar.setAttribute("onclick", "ordenarTabla(4);");
 
         hileraH.appendChild(codigo);
         hileraH.appendChild(titulo);
         hileraH.appendChild(nombre);
+//        hileraH.appendChild(edicion);
+//        hileraH.appendChild(eliminar);
+        
 
         tbHead.appendChild(hileraH);
         table.appendChild(tbHead);
@@ -57,7 +68,7 @@ function cargarTabla() {
         var tbBody = document.createElement("TBODY");
         table.appendChild(tbBody);
         for (var i = 0; i < datosCarreras.carreras.length; i++) {
-            
+
             //primer columna | codigo
             var row = document.createElement("TR");
             var celda = document.createElement("TD");
@@ -76,6 +87,23 @@ function cargarTabla() {
             text = document.createTextNode(
                     datosCarreras.carreras[i].nombre);
             celda.appendChild(text);
+            row.appendChild(celda);
+
+           
+            //boton de editar
+            celda = document.createElement("TD");
+            var btn = document.createElement("BUTTON");
+            btn.className="myButton";
+            btn .innerHTML=("Editar");
+            celda.appendChild(btn);
+            row.appendChild(celda);
+            //boton de Eliminar
+
+            celda = document.createElement("TD");
+            var btn = document.createElement("BUTTON");
+            btn.className="myButton";
+            btn .innerHTML=("Eliminar");
+            celda.appendChild(btn);
             row.appendChild(celda);
 
             tbBody.appendChild(row);
@@ -110,13 +138,13 @@ function ordenarTabla(n) {
             } else {
                 if (dir === "asc") {
                     if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                       
+
                         shouldSwitch = true;
                         break;
                     }
                 } else if (dir === "desc") {
                     if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        
+
                         shouldSwitch = true;
                         break;
                     }

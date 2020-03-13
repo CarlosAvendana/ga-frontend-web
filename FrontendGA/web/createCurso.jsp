@@ -21,7 +21,7 @@
                 <table class="rwd-table"> 
                     <tr>
                         <th>
-                            Crear Curso
+                            Agregar Curso
                         </th>
                     </tr>
                     <tr>

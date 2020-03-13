@@ -21,7 +21,7 @@
                 <table class="rwd-table"> 
                     <tr>
                         <th>
-                            Crear Carrera
+                            Agregar Carrera
                         </th>
                     </tr>
                     <tr>
