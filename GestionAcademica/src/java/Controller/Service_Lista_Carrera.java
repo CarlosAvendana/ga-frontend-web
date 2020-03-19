@@ -43,6 +43,8 @@ public class Service_Lista_Carrera extends HttpServlet {
                 pj.put(c.getCodigo());
                 pj.put( c.getTitulo());
                 pj.put( c.getNombre());
+                pj.put("<button type='button' class='btn btn-info'>Editar</button>");
+                pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCarrera("+c.getCodigo()+");'>Eliminar</button>");
 
                 _carrera_array_JS.put(pj);
             }
