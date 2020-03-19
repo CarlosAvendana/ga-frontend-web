@@ -13,16 +13,18 @@
         <script src="bootstrap/popper.min.js"></script>
         <script src="bootstrap_table/dataTables.bootstrap4.min.js"></script>
     </head>
-    <body>
+    <body onload="init();">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card text-center">
                         <div class="card-header">
-                            Lista de carreras
+                            Gestion Academica
                         </div>
                         <div class="card-body">
+                            <span class="btn btn-primary">Cursos</span>
                             <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Agregar Carrera</span>
+                            <span class="btn btn-primary">Salir</span>
                             <hr>
                             <div>
                                 <table id="example" class="table table-hover table-dark" style="width:100%;margin: auto; padding-top: 60px;">
@@ -54,25 +56,32 @@
             </div>
         </div>
         <script type="text/javascript">
-            let dataSet;
 
-            $.get('/GestionAcademica/Service_Lista_Carrera', function (data) {
-                dataSet = data;
-                console.log(dataSet);
-            });
+            function init() {
+                let dataSet;
 
-            $(document).ready(function () {
-                $('#example').DataTable({
-                    data: dataSet,
-                    columns: [
-                        {title: "Codigo"},
-                        {title: "Titulo"},
-                        {title: "Nombre"},
-                        {title: "Editar"},
-                        {title: "Eliminar"}
-                    ]
-                });
-            });
+
+                fetch('Service_Lista_Carrera')
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((dataSet) => {
+                            console.log(dataSet);
+                            $(document).ready(function () {
+                                $('#example').DataTable({
+                                    data: dataSet,
+                                    columns: [
+                                        {title: "Codigo"},
+                                        {title: "Titulo"},
+                                        {title: "Nombre"},
+                                        {title: "Editar"},
+                                        {title: "Eliminar"}
+                                    ]
+                                });
+                            });
+                        });
+            }
+
 
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').trigger('focus');
