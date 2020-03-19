@@ -54,14 +54,7 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="Guardar" align="right">  
-                        </td>
-                        <td>
-                            <input  type="reset" value="Cancelar" align="right">  
-                        </td>
-                    </tr>
+                    
                 </table>
             </form>
         </div>

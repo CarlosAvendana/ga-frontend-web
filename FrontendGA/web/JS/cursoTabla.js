@@ -38,9 +38,9 @@ function cargarTabla() {
         codigo.appendChild(document.createTextNode("Código"));
         codigo.setAttribute("onclick", "ordenarTabla(0);");
 
-        var codigo_carrera = document.createElement("TH");
-        codigo_carrera.appendChild(document.createTextNode("Código Carrera"));
-        codigo_carrera.setAttribute("onclick", "ordenarTabla(1);");
+//        var codigo_carrera = document.createElement("TH");
+//        codigo_carrera.appendChild(document.createTextNode("Código Carrera"));
+//        codigo_carrera.setAttribute("onclick", "ordenarTabla(1);");
 
         var anio = document.createElement("TH");
         anio.appendChild(document.createTextNode("Año"));
@@ -63,7 +63,7 @@ function cargarTabla() {
         horas_semana.setAttribute("onclick", "ordenarTabla(5);");
 
         hileraH.appendChild(codigo);
-        hileraH.appendChild(codigo_carrera);
+//        hileraH.appendChild(codigo_carrera);
         hileraH.appendChild(anio);
         hileraH.appendChild(ciclo);
         hileraH.appendChild(nombre);
@@ -85,11 +85,11 @@ function cargarTabla() {
             celda.appendChild(text);
             row.appendChild(celda);
             //segunda columna | carrera_codigo
-            celda = document.createElement("TD");
-            text = document.createTextNode(
-                    datosCursos.cursos[i].carrera_codigo);
-            celda.appendChild(text);
-            row.appendChild(celda);
+//            celda = document.createElement("TD");
+//            text = document.createTextNode(
+//                    datosCursos.cursos[i].carrera_codigo);
+//            celda.appendChild(text);
+//            row.appendChild(celda);
             //tercer columna | anio
             celda = document.createElement("TD");
             text = document.createTextNode(
@@ -122,20 +122,20 @@ function cargarTabla() {
                     datosCursos.cursos[i].horas_semanales);
             celda.appendChild(text);
             row.appendChild(celda);
-            
+
             //boton de editar
             celda = document.createElement("TD");
             var btn = document.createElement("BUTTON");
-            btn.className="myButton";
-            btn .innerHTML=("Editar");
+            btn.className = "myButton";
+            btn.innerHTML = ("Editar");
             celda.appendChild(btn);
             row.appendChild(celda);
             //boton de Eliminar
 
             celda = document.createElement("TD");
             var btn = document.createElement("BUTTON");
-            btn.className="myButton";
-            btn .innerHTML=("Eliminar");
+            btn.className = "myButton";
+            btn.innerHTML = ("Eliminar");
             celda.appendChild(btn);
             row.appendChild(celda);
 

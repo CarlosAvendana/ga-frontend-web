@@ -1,24 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Servicios;
+
+package Controller;
 
 import backendga.modelo.Carrera;
 import backendga.modelo.dao.GestorCarrera;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-/**
- *
- * @author carlos
- */
-public class Service_Crea_Carrera extends HttpServlet {
+
+public class Service_Lista_Carrera extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,21 +27,27 @@ public class Service_Crea_Carrera extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
+        response.setContentType("application/json;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
 
-            GestorCarrera g = GestorCarrera.obtenerInstancia();
+            List<Carrera> _Lista_carrera
+                    = GestorCarrera.obtenerInstancia().listarCarreras();
 
-            Carrera grup = null;
+            
+            JSONArray _carrera_array_JS = new JSONArray();
 
-            String _codigo = request.getParameter("codigoF");
-            String _nombre = request.getParameter("nombreF");
-            String _titulo = request.getParameter("tituloF");
+            for (Carrera c : _Lista_carrera) {
+                JSONArray pj = new JSONArray();
 
-            g.insertarCarrera(_codigo, _nombre, _titulo);
+                pj.put(c.getCodigo());
+                pj.put( c.getTitulo());
+                pj.put( c.getNombre());
 
-            response.sendRedirect("carreraLista.jsp");
+                _carrera_array_JS.put(pj);
+            }
+           
+            out.print(_carrera_array_JS);
         }
     }
 

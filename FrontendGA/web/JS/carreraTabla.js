@@ -1,6 +1,10 @@
+/* global fetch */
+
 function init() {
     solicitarListaCarreras("Service_Lista_Carrera");
-}
+    //crearTablaBusqueda();
+   
+};
 
 function solicitarListaCarreras(origen) {
     fetch(origen).then(
@@ -12,6 +16,7 @@ function solicitarListaCarreras(origen) {
         datosCarreras = dt;
         console.log(datosCarreras);
         cargarTabla();
+
     }
     );
 }
@@ -45,7 +50,7 @@ function cargarTabla() {
         var nombre = document.createElement("TH");
         nombre.appendChild(document.createTextNode("Nombre"));
         nombre.setAttribute("onclick", "ordenarTabla(2);");
-        
+
 //        var edicion = document.createElement("TH");
 //        edicion.appendChild(document.createTextNode("Edicion"));
 //        edicion.setAttribute("onclick", "ordenarTabla(3);");
@@ -59,7 +64,7 @@ function cargarTabla() {
         hileraH.appendChild(nombre);
 //        hileraH.appendChild(edicion);
 //        hileraH.appendChild(eliminar);
-        
+
 
         tbHead.appendChild(hileraH);
         table.appendChild(tbHead);
@@ -89,20 +94,20 @@ function cargarTabla() {
             celda.appendChild(text);
             row.appendChild(celda);
 
-           
+
             //boton de editar
             celda = document.createElement("TD");
             var btn = document.createElement("BUTTON");
-            btn.className="myButton";
-            btn .innerHTML=("Editar");
+            btn.className = "myButton";
+            btn.innerHTML = ("Editar");
             celda.appendChild(btn);
             row.appendChild(celda);
             //boton de Eliminar
 
             celda = document.createElement("TD");
             var btn = document.createElement("BUTTON");
-            btn.className="myButton";
-            btn .innerHTML=("Eliminar");
+            btn.className = "myButton";
+            btn.innerHTML = ("Eliminar");
             celda.appendChild(btn);
             row.appendChild(celda);
 
@@ -161,5 +166,47 @@ function ordenarTabla(n) {
                 switching = true;
             }
         }
+    }
+}
+
+function crearTablaBusqueda() {
+    if (!document.getElementsByTagName("TABLE")[0]) {
+        var table = document.createElement("TABLE");
+        document.getElementById("Sec_Busca_Carrera").appendChild(table);
+        return true;
+    }
+    return false;
+}
+
+function cargarTablaBusqueda() {
+    if (crearTablaBusqueda()) {
+
+        var table = document.getElementsByTagName("TABLE")[0];
+        table.className = "rwd-table";
+
+        var hileraH = document.createElement("TR");
+        var celda = document.createElement("TD");
+        var boton = document.createElement("BUTTON");
+
+
+        boton.innerHTML = "Agregar Carrera";
+        boton.className = "myButton";
+        boton.style.marginRight = "25px";
+        celda.appendChild(boton);
+        hileraH.appendChild(celda);
+
+
+        var celda2 = document.createElement("TD");
+        var boton = document.createElement("BUTTON");
+        var input = document.createElement("INPUT");
+
+        input.type = "search";
+        boton.innerHTML = "Buscar";
+        boton.className = "myButton";
+        celda.appendChild(input);
+        celda.appendChild(boton);
+        hileraH.appendChild(celda2);
+        table.appendChild(hileraH);
+
     }
 }

@@ -1,5 +1,5 @@
 <div>
-    <div class="area"></div>
+
     <nav class="main-menu">
         <ul>
             <li>
@@ -35,7 +35,7 @@
                     </span>
                 </a>
             </li>
-            
+
         </ul>
         <ul class="logout">
             <li>
