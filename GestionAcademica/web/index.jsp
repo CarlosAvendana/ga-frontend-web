@@ -1,44 +1,70 @@
-<%-- 
-    Document   : index
-    Created on : Mar 16, 2020, 10:33:37 PM
-    Author     : carlos
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Log In</title>
-        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"/>
-        <script src="bootstrap/bootstrap.min.js"></script>
-        <script src="bootstrap/jquery.min.js"></script>
-        <script src="bootstrap/popper.min.js"></script>
+        <title>Gestión Académica</title>
+        <link rel="icon" href="Icon/GA1.ico" type="image/png"/>
+
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">	
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+
     </head>
-    <body>
-        <div id="cuadro">
-            <div id="cabeza">Iniciar Sesion Gestion Academica</div>
-            <div id="cuerpo">
-                <form class="">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Usuario</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputEmail3">
+    <body style="background-color:#040505; ">
+
+        <div class="limiter">
+            <div class="container-login100">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                        <span class="login100-form-title">
+                            Iniciar sesión
+                        </span>
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Cedula">
+                            <input class="input100" type="text" name="cedula" placeholder="Cedula">
+                            <span class="focus-input100"></span>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Clave</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3">
+
+                        <div class="wrap-input100 validate-input" data-validate = "Clave">
+                            <input class="input100" type="password" name="clave" placeholder="Clave">
+                            <span class="focus-input100"></span>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-dark float-right m-2">Iniciar Sesion</button>
+
+                        <div class="text-right p-t-13 p-b-23">
+
                         </div>
-                    </div>
-                </form>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Sign in
+                            </button>
+                        </div>
+
+                        <div class="flex-col-c p-t-13 p-b-40">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+        <script src="js/main.js"></script>
+
     </body>
 </html>

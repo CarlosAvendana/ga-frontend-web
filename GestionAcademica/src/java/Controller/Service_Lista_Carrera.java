@@ -1,4 +1,3 @@
-
 package Controller;
 
 import backendga.modelo.Carrera;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 
 public class Service_Lista_Carrera extends HttpServlet {
 
@@ -34,21 +32,20 @@ public class Service_Lista_Carrera extends HttpServlet {
             List<Carrera> _Lista_carrera
                     = GestorCarrera.obtenerInstancia().listarCarreras();
 
-            
             JSONArray _carrera_array_JS = new JSONArray();
 
             for (Carrera c : _Lista_carrera) {
                 JSONArray pj = new JSONArray();
 
                 pj.put(c.getCodigo());
-                pj.put( c.getTitulo());
-                pj.put( c.getNombre());
+                pj.put(c.getTitulo());
+                pj.put(c.getNombre());
                 pj.put("<button type='button' class='btn btn-info'>Editar</button>");
-                pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCarrera("+c.getCodigo()+");'>Eliminar</button>");
+                pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCarrera(" + c.getCodigo() + ");'>Eliminar</button>");
 
                 _carrera_array_JS.put(pj);
             }
-           
+
             out.print(_carrera_array_JS);
         }
     }

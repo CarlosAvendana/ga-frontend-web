@@ -22,7 +22,7 @@
                             Gestion Academica
                         </div>
                         <div class="card-body">
-                            <span class="btn btn-primary">Cursos</span>
+                            <span class="btn btn-primary" href="Cursos.jsp">Cursos</span>
                             <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Agregar Carrera</span>
                             <span class="btn btn-primary">Salir</span>
                             <hr>
@@ -43,7 +43,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Carrera</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo carrera</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -51,7 +51,6 @@
                     <div class="modal-body">
 
                     </div>
-
                 </div>
             </div>
         </div>

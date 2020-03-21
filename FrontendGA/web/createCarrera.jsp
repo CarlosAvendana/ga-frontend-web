@@ -54,7 +54,9 @@
                             </select>
                         </td>
                     </tr>
-                    
+                    <tr><td><button type="submit" class="myButton">Guardar</button></td>
+
+                    </tr>
                 </table>
             </form>
         </div>
