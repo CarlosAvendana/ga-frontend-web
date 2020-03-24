@@ -1,8 +1,8 @@
 package Controller;
 
+import backendga.modelo.Model;
 import backendga.modelo.dao.GestorUsuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +14,17 @@ public class Service_Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         boolean usuarioValido = false;
+        Model model = new Model();
+
         String usuario = request.getParameter("user");
         String password = request.getParameter("pass");
+
         int user2 = Integer.parseInt(usuario);
+
         if (usuario != null && password != null) {
-            usuarioValido = GestorUsuario.obtenerInstancia().validacionUsuario(user2, password);
+            usuarioValido = model.validaUsuario(user2, password);
+        } else {
+            response.sendRedirect("index.jsp");
         }
         if (usuarioValido) {
             response.sendRedirect("Carreras.jsp");

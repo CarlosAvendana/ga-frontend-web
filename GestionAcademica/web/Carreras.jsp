@@ -15,15 +15,15 @@
         <script src="bootstrap/popper.min.js"></script>
         <script src="bootstrap_table/dataTables.bootstrap4.min.js"></script>
     </head>
-    <body onload="init();">
+    <body onload="init();" style="background-color:#1b262c; ">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header bg-dark text-white">
                             Gestion Academica
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-dark text-white">
 
                             <a class="btn btn-primary" href="Cursos.jsp" role="button">Cursos</a>
                             <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Agregar Carrera</span>
@@ -34,7 +34,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer bg-dark text-white">
                             Laboratorio Moviles 01-02 ~ Carlos Obando & Felipe Piedra
                         </div>
                     </div>
@@ -44,8 +44,8 @@
         <!-- Modal Para Agregar -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header text-white bg-dark">
                         <h5 class="modal-title" id="exampleModalLabel">Agregar nueva carrera</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

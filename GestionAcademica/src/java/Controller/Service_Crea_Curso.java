@@ -1,5 +1,6 @@
 package Controller;
 
+import backendga.modelo.Model;
 import backendga.modelo.dao.GestorCurso;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,19 +17,18 @@ public class Service_Crea_Curso extends HttpServlet {
         response.setHeader("cache-control", "no-cache, no-store, must-revalidate");
         try (PrintWriter out = response.getWriter()) {
 
-            GestorCurso g = GestorCurso.obtenerInstancia();
+            Model model = new Model();
 
-            String _codigo = request.getParameter("codigoCursoF");
-            String _carrera_codigo = request.getParameter("codi_carF");
-            String _anio = request.getParameter("anioF");
-            String _ciclo = request.getParameter("cicloF");
-            String _nombre = request.getParameter("nombreCursoF");
-            String _creditosS = request.getParameter("creditosF");
-            String _hsS = request.getParameter("horaSemanalF");
+            String _codigo = request.getParameter("codigoCF");
+            String _carrera_codigo = request.getParameter("cCF");
+            String _anio = request.getParameter("anioCF");
+            String _ciclo = request.getParameter("cicloCF");
+            String _nombre = request.getParameter("nombreCF");
+            String _creditosS = request.getParameter("numeroCF");
+            String _hsS = request.getParameter("horasCF");
             int hs = Integer.parseInt(_hsS);
             int credi = Integer.parseInt(_creditosS);
-
-            g.insertarCurso(_codigo, _carrera_codigo, _anio, _ciclo, _nombre, credi, hs);
+            model.getGestorCurso().insertarCurso(_codigo, _carrera_codigo, _anio, _ciclo, _nombre, credi, hs);
 
             response.sendRedirect("Cursos.jsp");
         }

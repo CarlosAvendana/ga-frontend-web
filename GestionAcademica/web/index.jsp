@@ -19,23 +19,23 @@
 
 
     </head>
-    <body style="background-color:#040505; ">
+    <body>
 
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                    <form action="Service_Login" method="POST" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
                         <span class="login100-form-title">
-                            Iniciar sesión
+                            Gestión Académica
                         </span>
 
                         <div class="wrap-input100 validate-input m-b-16" data-validate="Cedula">
-                            <input class="input100" type="text" name="cedula" placeholder="Cedula">
+                            <input oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="input100" type="text" name="user" placeholder="Cédula">
                             <span class="focus-input100"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate = "Clave">
-                            <input class="input100" type="password" name="clave" placeholder="Clave">
+                            <input class="input100" type="password" name="pass" placeholder="Clave">
                             <span class="focus-input100"></span>
                         </div>
 
@@ -44,8 +44,8 @@
                         </div>
 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Sign in
+                            <button type="submit" class="login100-form-btn">
+                                Inicia sesión
                             </button>
                         </div>
 

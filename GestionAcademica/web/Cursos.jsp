@@ -16,15 +16,15 @@
         <script src="bootstrap_table/dataTables.bootstrap4.min.js"></script>
 
     </head>
-    <body onload="init();">
+    <body onload="init();" style="background-color:#1b262c;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card text-center">
-                        <div class="card-header">
+                        <div class="card-header bg-dark text-white">
                             Gestion Academica
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-dark text-white border-dark">
                             <a class="btn btn-primary" href="Carreras.jsp" role="button">Carreras</a>
                             <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Agregar Curso</span>
                             <span class="btn btn-primary">Salir</span>
@@ -34,7 +34,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer bg-dark text-white">
                             Laboratorio Moviles 01-02 ~ Carlos Obando & Felipe Piedra
                         </div>
                     </div>
@@ -44,7 +44,7 @@
         <!-- Modal Para Agregar Cursos -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo curso</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -61,7 +61,7 @@
                                 <div class="col-auto">
                                     <div class="form-group">
                                         <label>Código:</label>
-                                        <input name="codigoCF"  type="text" class="form-control" id="codigoCF" placeholder="Código de la carrera:" required>
+                                        <input type="text" class="form-control" placeholder="Código de la carrera:"  name="codigoCF" required>
                                         <div class="valid-feedback">Valido!</div>
                                         <div class="invalid-feedback">Por favor llenar el campo!</div>
                                     </div>
@@ -81,16 +81,16 @@
 
                                 <div class="col-auto">
                                     <div class="form-group">
-                                        <label for="uname">Numero de Creditos:</label>
-                                        <input type="number" class="form-control" id="numeroCF" placeholder="Numero de creditos" name="numeroCF" required>
+                                        <label>Numero de Creditos:</label>
+                                        <input type="number" min="1" class="form-control" placeholder="Numero de creditos" name="numeroCF" required>
                                         <div class="valid-feedback">Valido!</div>
                                         <div class="invalid-feedback">Por favor llenar el campo!</div>
                                     </div>
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-group">
-                                        <label for="uname">Horas semanales:</label>
-                                        <input type="number" class="form-control" id="numeroCF" placeholder="Horas Semanales" name="numeroCF" required>
+                                        <label>Horas semanales:</label>
+                                        <input type="number" min="1" class="form-control" placeholder="Horas Semanales" name="horasCF" required>
                                         <div class="valid-feedback">Valido!</div>
                                         <div class="invalid-feedback">Por favor llenar el campo!</div>
                                     </div>
@@ -101,30 +101,26 @@
 
                                 <div class="col-auto">
                                     <div class="form-group">
-                                        <label class="form-check-label">
-                                            <label for="uname">Ciclo: </label>
-                                            <select name="tituloCF" class="custom-select" required = "required">
-                                                <option value="I">I</option>
-                                                <option value="II">II</option>
-                                            </select>
-                                        </label>
+                                        <label>Ciclo: </label>
+                                        <select name="cicloCF" class="custom-select" required = "required">
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="col-auto">
                                     <div class="form-group">
-                                        <label class="form-check-label">
-                                            <label for="uname">Codigo de carrera: </label>
-                                            <select id="locality-dropdown" name="tituloCF" class="custom-select" required = "required">
-                                            </select>
-                                        </label>
+                                        <label >Codigo de carrera: </label>
+                                        <select id="locality-dropdown" name="cCF" class="custom-select" required = "required">
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="col-auto">
                                     <div class="form-group">
-                                        <label for="uname">Año:</label>
-                                        <input type="number" min="1900" max="2099" step="1" value="2020" name="anioF" class="form-control" id="numeroCF" placeholder="Horas Semanales" name="numeroCF" required>
+                                        <label>Año:</label>
+                                        <input type="number" min="1900" max="2099" step="1" value="2020"class="form-control" placeholder="Horas Semanales" name="anioCF" required>
                                         <div class="valid-feedback">Valido!</div>
                                         <div class="invalid-feedback">Por favor llenar el campo!</div>
                                     </div>
