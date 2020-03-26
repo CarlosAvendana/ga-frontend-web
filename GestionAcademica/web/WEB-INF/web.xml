@@ -24,6 +24,10 @@
         <servlet-name>Service_Lista_CodigoCarreras</servlet-name>
         <servlet-class>Controller.Service_Lista_CodigoCarreras</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Service_Borra_Curso</servlet-name>
+        <servlet-class>Controller.Service_Borra_Curso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Service_Lista_Carrera</servlet-name>
         <url-pattern>/Service_Lista_Carrera</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>Service_Lista_CodigoCarreras</servlet-name>
         <url-pattern>/Service_Lista_CodigoCarreras</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Service_Borra_Curso</servlet-name>
+        <url-pattern>/Service_Borra_Curso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

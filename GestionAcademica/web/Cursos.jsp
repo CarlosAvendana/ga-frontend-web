@@ -129,24 +129,18 @@
 
                             <button type="submit" class="btn btn-primary">Agregar</button>
                             <button type="reset" class="btn btn-primary">Borrar</button>
-
                         </form>
-
-
                     </div>
                 </div>
                 <script type="text/javascript">
 
                     function init() {
                         let dataSet;
-
-
                         fetch('Service_Lista_Curso')
                                 .then((response) => {
                                     return response.json();
                                 })
                                 .then((dataSet) => {
-                                    console.log(dataSet);
                                     $(document).ready(function () {
                                         $('#example').DataTable({
                                             data: dataSet,
@@ -165,11 +159,9 @@
                                 });
                     }
 
-
                     $('#myModal').on('shown.bs.modal', function () {
                         $('#myInput').trigger('focus');
                     });
-
                     let dropdown = $('#locality-dropdown');
                     dropdown.empty();
                     dropdown.prop('selectedIndex', 0);
@@ -177,11 +169,19 @@
                     $.getJSON(url, function (data) {
                         $.each(data, function (key, entry) {
                             dropdown.append($('<option></option>').attr('value', entry.codigo).text(entry.codigo));
-                        })
+                        });
                     });
 
+                    function eliminaCurso(codigoCurso) {
+                        $.ajax({
+                            type: "POST",
+                            url: '/GestionAcademica/Service_Borra_Curso',
+                            data: {cursoCodigo: codigoCurso}
+                        });
+                        location.reload();
+                    }
+
+
                 </script>
-
-
                 </body>
                 </html>
