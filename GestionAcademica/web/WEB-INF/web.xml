@@ -36,6 +36,10 @@
         <servlet-name>Service_Edita_Carrera</servlet-name>
         <servlet-class>Controller.Service_Edita_Carrera</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Service_Edita_Curso</servlet-name>
+        <servlet-class>Controller.Service_Edita_Curso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Service_Lista_Carrera</servlet-name>
         <url-pattern>/Service_Lista_Carrera</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>Service_Edita_Carrera</servlet-name>
         <url-pattern>/Service_Edita_Carrera</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Service_Edita_Curso</servlet-name>
+        <url-pattern>/Service_Edita_Curso</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

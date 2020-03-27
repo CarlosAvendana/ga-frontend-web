@@ -28,7 +28,8 @@ public class Service_Crea_Curso extends HttpServlet {
             String _hsS = request.getParameter("horasCF");
             int hs = Integer.parseInt(_hsS);
             int credi = Integer.parseInt(_creditosS);
-            model.getGestorCurso().insertarCurso(_codigo, _carrera_codigo, _anio, _ciclo, _nombre, credi, hs);
+            model.getGestorCurso().insertarCurso(_codigo, _carrera_codigo, _anio,
+                    _ciclo, _nombre, credi, hs);
 
             response.sendRedirect("Cursos.jsp");
         }

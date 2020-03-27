@@ -1,49 +1,34 @@
 package Controller;
 
-import backendga.modelo.Curso;
-import backendga.modelo.dao.GestorCurso;
+import backendga.modelo.Model;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
 
-public class Service_Lista_Curso extends HttpServlet {
+public class Service_Edita_Curso extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
-
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            Model model = new Model();
 
-            List<Curso> _Lista_carrera
-                    = GestorCurso.obtenerInstancia().listarCurso();
+            String _codigo = request.getParameter("codigoCF");
+            String _carrera_codigo = request.getParameter("cCF");
+            String _anio = request.getParameter("anioCF");
+            String _ciclo = request.getParameter("cicloCF");
+            String _nombre = request.getParameter("nombreCF");
+            String _creditosS = request.getParameter("numeroCF");
+            String _hsS = request.getParameter("horasCF");
+            int hs = Integer.parseInt(_hsS);
+            int credi = Integer.parseInt(_creditosS);
 
-            JSONArray _curso_array_JS = new JSONArray();
-
-            for (Curso c : _Lista_carrera) {
-                JSONArray pj = new JSONArray();
-
-                pj.put(c.getCodigo());
-                //pj.put(c.getCarrera_codigo());
-                pj.put(c.getAnio());
-                pj.put(c.getCiclo());
-                pj.put(c.getNombre());
-                pj.put(c.getCreditos());
-                pj.put(c.getHoras_semanales());
-                pj.put("<button type='button' data-toggle=\"modal\" data-target=\"#exampleModal\" class='btn btn-info' onclick='actualizaCurso"
-                        + "(\"" + c.getCodigo() + "," + c.getCarrera_codigo() + "," + c.getAnio() + "," + c.getCiclo() + "," + c.getNombre() + ","
-                        + c.getCreditos() + "," + c.getHoras_semanales() + "\");'>Editar</button>");
-
-                pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCurso(\"" + c.getCodigo() + "\");'>Eliminar</button>");
-
-                _curso_array_JS.put(pj);
-            }
-
-            out.print(_curso_array_JS);
+            model.getGestorCurso().actualizarCurso(_codigo, _carrera_codigo, _anio,
+                    _ciclo, _nombre, credi, hs);
+            response.sendRedirect("Cursos.jsp");
         }
     }
 

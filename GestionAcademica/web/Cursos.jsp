@@ -46,90 +46,92 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo curso</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" >Agregar nuevo curso</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <div class="modal-body">
+                        <div class="container">
+                            <form action="Service_Crea_Curso" method="POST"  class="was-validated" id="modalForm">
+                                <div class="form-row align-items-center">
 
-                        <form action="Service_Crea_Curso" method="POST" class="was-validated">
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label>Código:</label>
+                                            <input type="text" class="form-control" placeholder="Código de la carrera:"  name="codigoCF" id="codigoCF" required>
+                                            <div class="valid-feedback">Valido!</div>
+                                            <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                        </div>
+                                    </div>
 
-                            <div class="form-row align-items-center">
-
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label>Código:</label>
-                                        <input type="text" class="form-control" placeholder="Código de la carrera:"  name="codigoCF" required>
-                                        <div class="valid-feedback">Valido!</div>
-                                        <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label for="uname">Nombre: </label>
+                                            <input type="text" class="form-control" id="nombreCF" placeholder="Nombre del curso:" name="nombreCF" id="nombreCF" required>
+                                            <div class="valid-feedback">Valido!</div>
+                                            <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label for="uname">Nombre: </label>
-                                        <input type="text" class="form-control" id="nombreCF" placeholder="Nombre del curso:" name="nombreCF" required>
-                                        <div class="valid-feedback">Valido!</div>
-                                        <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                <div class="form-row align-items-center">
+
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label>Numero de Creditos:</label>
+                                            <input type="number" min="1" class="form-control" placeholder="Numero de creditos" name="numeroCF" id="numeroCF" required>
+                                            <div class="valid-feedback">Valido!</div>
+                                            <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row align-items-center">
-
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label>Numero de Creditos:</label>
-                                        <input type="number" min="1" class="form-control" placeholder="Numero de creditos" name="numeroCF" required>
-                                        <div class="valid-feedback">Valido!</div>
-                                        <div class="invalid-feedback">Por favor llenar el campo!</div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label>Horas semanales:</label>
-                                        <input type="number" min="1" class="form-control" placeholder="Horas Semanales" name="horasCF" required>
-                                        <div class="valid-feedback">Valido!</div>
-                                        <div class="invalid-feedback">Por favor llenar el campo!</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row align-items-center">
-
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label>Ciclo: </label>
-                                        <select name="cicloCF" class="custom-select" required = "required">
-                                            <option value="I">I</option>
-                                            <option value="II">II</option>
-                                        </select>
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label>Horas semanales:</label>
+                                            <input type="number" min="1" class="form-control" placeholder="Horas Semanales" name="horasCF" id="horasCF" required>
+                                            <div class="valid-feedback">Valido!</div>
+                                            <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label >Codigo de carrera: </label>
-                                        <select id="locality-dropdown" name="cCF" class="custom-select" required = "required">
-                                        </select>
+                                <div class="form-row align-items-center">
+
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label>Ciclo: </label>
+                                            <select name="cicloCF" class="custom-select" id="cicloCF" required = "required">
+                                                <option value="I">I</option>
+                                                <option value="II">II</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label >Codigo de carrera: </label>
+                                            <select id="locality-dropdown" name="cCF" class="custom-select"  required = "required">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <label>Año:</label>
+                                            <input type="number" min="1900" max="2099" step="1" value="2020"class="form-control" placeholder="Anio" id="anioCF" name="anioCF" required>
+                                            <div class="valid-feedback">Valido!</div>
+                                            <div class="invalid-feedback">Por favor llenar el campo!</div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-auto">
-                                    <div class="form-group">
-                                        <label>Año:</label>
-                                        <input type="number" min="1900" max="2099" step="1" value="2020"class="form-control" placeholder="Horas Semanales" name="anioCF" required>
-                                        <div class="valid-feedback">Valido!</div>
-                                        <div class="invalid-feedback">Por favor llenar el campo!</div>
-                                    </div>
-                                </div>
-                            </div>
+                                <button type="submit" id="botonAgregar" class="btn btn-primary">Agregar</button>
+                                <button type="reset" class="btn btn-primary">Borrar</button>
+                            </form>
 
-                            <button type="submit" class="btn btn-primary">Agregar</button>
-                            <button type="reset" class="btn btn-primary">Borrar</button>
-                        </form>
+                        </div>
+
                     </div>
                 </div>
                 <script type="text/javascript">
@@ -179,9 +181,43 @@
                             data: {cursoCodigo: codigoCurso}
                         });
                         location.reload();
-                        
+
                     }
 
+                    function resetTitulo(dato) {
+                        if (dato === 1) {
+                            $('#exampleModalLabel').html("Editar Curso");
+                            $('#botonAgregar').html("Actualizar");
+                            $("#codigoCF").prop("disabled", true);
+                        } else {
+                            $('#exampleModalLabel').html("Agregar Curso");
+                            $('#botonAgregar').html("Agregar");
+                            $("#codigoCF").prop("disabled", false);
+                        }
+                    }
+
+                    function actualizaCurso(datosString) {
+                        resetTitulo(1);
+
+
+                        resetTitulo(1);
+                        const[codigo, carrerracodigo, anio, ciclo, nombre, creditos, horas] = datosString.split(',');
+                        $('#codigoCF').val(codigo);
+                        $('#nombreCF').val(nombre);
+                        $('#numeroCF').val(creditos);
+                        $('#horasCF').val(horas);
+                        $('#cicloCF').val(ciclo);
+                        $('#locality-dropdown').val(carrerracodigo);
+                        $('#anioCF').val(anio);
+
+
+                        $('#modalForm').submit(function () {
+                            $(this).attr('action', 'Service_Edita_Curso');
+                            resetTitulo(0);
+
+                        });
+
+                    }
 
                 </script>
                 </body>

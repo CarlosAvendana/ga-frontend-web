@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-check-label">
-                                        <label for="uname">Título: </label>
+                                        <label >Título: </label>
                                         <select name="tituloCF" class="custom-select" id="tituloCF" required>
                                             <option value="Diplomado" id="diplomadoID">Diplomado</option>
                                             <option value="Bachillerato" id="bachilleratoID">Bachillerato</option>
@@ -139,18 +139,17 @@
                     resetTitulo(0);
 
                 });
-
-
-
             }
 
             function resetTitulo(dato) {
                 if (dato === 1) {
                     $('#exampleModalLabel').html("Editar Carrera");
                     $('#botonAgregar').html("Actualizar");
+                    $("#codigoCF").prop("disabled", true);
                 } else {
                     $('#exampleModalLabel').html("Agregar Carrera");
                     $('#botonAgregar').html("Agregar");
+                    $("#codigoCF").prop("disabled", false);
                 }
             }
 
