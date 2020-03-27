@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Service_Lista_Curso extends HttpServlet {
 
@@ -35,7 +34,7 @@ public class Service_Lista_Curso extends HttpServlet {
                 pj.put(c.getNombre());
                 pj.put(c.getCreditos());
                 pj.put(c.getHoras_semanales());
-                pj.put("<button type='button' class='btn btn-info'>Editar</button>");
+                pj.put("<button type='button' class='btn btn-info' onclick='actualizaCurso(\"" + c.getCodigo() + "\");'>Editar</button>");
 
                 pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCurso(\"" + c.getCodigo() + "\");'>Eliminar</button>");
 

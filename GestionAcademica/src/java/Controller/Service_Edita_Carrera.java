@@ -1,52 +1,27 @@
 package Controller;
 
-import backendga.modelo.Carrera;
-import backendga.modelo.dao.GestorCarrera;
+import backendga.modelo.Model;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class Service_Lista_Carrera extends HttpServlet {
+public class Service_Edita_Carrera extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json;charset=UTF-8");
-
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            Model model = new Model();
 
-            List<Carrera> _Lista_carrera
-                    = GestorCarrera.obtenerInstancia().listarCarreras();
+            String _codigo = request.getParameter("codigoCF");
+            String _nombre = request.getParameter("nombreCF");
+            String _titulo = request.getParameter("tituloCF");
 
-            JSONArray _carrera_array_JS = new JSONArray();
-
-            for (Carrera c : _Lista_carrera) {
-                JSONArray pj = new JSONArray();
-
-                pj.put(c.getCodigo());
-                pj.put(c.getTitulo());
-                pj.put(c.getNombre());
-                pj.put("<button type='button' class='btn btn-info'data-toggle=\"modal\" data-target=\"#exampleModal\" onclick='abrirModalActualiza(\"" + c.getCodigo() + "," + c.getNombre() + "," + c.getTitulo() + "\");'>Editar</button>");
-                pj.put("<button type='button' class='btn btn-danger' onclick='eliminaCarrera(\"" + c.getCodigo() + "\");'>Eliminar</button>");
-
-                _carrera_array_JS.put(pj);
-            }
-
-            out.print(_carrera_array_JS);
+            model.getGestorCarrera().actualizarCarrera(_codigo, _nombre, _titulo);
+            response.sendRedirect("Carreras.jsp");
         }
     }
 

@@ -26,7 +26,7 @@
                         <div class="card-body bg-dark text-white">
 
                             <a class="btn btn-primary" href="Cursos.jsp" role="button">Cursos</a>
-                            <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Agregar Carrera</span>
+                            <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="resetTitulo()"> Agregar Carrera</span>
                             <span class="btn btn-primary">Salir</span>
                             <hr>
                             <div>
@@ -53,32 +53,32 @@
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <form action="Service_Crea_Carrera" method="POST" class="was-validated">
+                            <form action="Service_Crea_Carrera" method="POST" class="was-validated" id="modalForm">
                                 <div class="form-group">
                                     <label for="uname">Código:</label>
-                                    <input type="text" class="form-control" id="codigoCF" placeholder="Código de la carrera" name="codigoCF" required>
+                                    <input type="text" class="form-control" placeholder="Código de la carrera" name="codigoCF" id="codigoCF" required>
                                     <div class="valid-feedback">Valido!</div>
                                     <div class="invalid-feedback">Por favor llenar el campo!</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="uname">Nombre: </label>
-                                    <input type="text" class="form-control" id="nombreCF" placeholder="Nombre de la carrera" name="nombreCF" required>
+                                    <input type="text" class="form-control" placeholder="Nombre de la carrera" name="nombreCF" id="nombreCF" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Por favor llenar el campo.</div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-check-label">
                                         <label for="uname">Título: </label>
-                                        <select name="tituloCF" class="custom-select" required = "required">
-                                            <option value="Diplomado" >Diplomado</option>
-                                            <option value="Bachillerato">Bachillerato</option>
-                                            <option value="Licenciatura">Licenciatura</option>
-                                            <option value="Maestría">Maestría</option>
-                                            <option value="Doctorado">Doctorado</option>
+                                        <select name="tituloCF" class="custom-select" id="tituloCF" required>
+                                            <option value="Diplomado" id="diplomadoID">Diplomado</option>
+                                            <option value="Bachillerato" id="bachilleratoID">Bachillerato</option>
+                                            <option value="Licenciatura" id="licenciaturaID">Licenciatura</option>
+                                            <option value="Maestría" id="maestriaID">Maestría</option>
+                                            <option value="Doctorado" id="doctoradoID">Doctorado</option>
                                         </select>
                                     </label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Agregar</button>
+                                <button id="botonAgregar" type="submit" class="btn btn-primary">Agregar</button>
                                 <button type="reset" class="btn btn-primary">Borrar</button>
                             </form>
                         </div>
@@ -113,10 +113,47 @@
                         });
             }
 
-
             $('#myModal').on('shown.bs.modal', function () {
                 $('#myInput').trigger('focus');
             });
+
+            function eliminaCarrera(codigoCarrera) {
+                $.ajax({
+                    type: "POST",
+                    url: '/GestionAcademica/Service_Borra_Carrera',
+                    data: {carreraCodigo: codigoCarrera}
+                });
+                location.reload();
+            }
+
+            function abrirModalActualiza(datosString) {
+
+                resetTitulo(1);
+                const[codigo, nombre, titulo] = datosString.split(',');
+                $('#codigoCF').val(codigo);
+                $('#nombreCF').val(nombre);
+                $('#tituloCF').val(titulo);
+
+                $('#modalForm').submit(function () {
+                    $(this).attr('action', 'Service_Edita_Carrera');
+                    resetTitulo(0);
+
+                });
+
+
+
+            }
+
+            function resetTitulo(dato) {
+                if (dato === 1) {
+                    $('#exampleModalLabel').html("Editar Carrera");
+                    $('#botonAgregar').html("Actualizar");
+                } else {
+                    $('#exampleModalLabel').html("Agregar Carrera");
+                    $('#botonAgregar').html("Agregar");
+                }
+            }
+
         </script>
     </body>
 </html>

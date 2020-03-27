@@ -179,6 +179,7 @@
                             data: {cursoCodigo: codigoCurso}
                         });
                         location.reload();
+                        
                     }
 
 
