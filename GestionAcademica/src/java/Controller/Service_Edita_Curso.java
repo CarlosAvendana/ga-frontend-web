@@ -15,19 +15,18 @@ public class Service_Edita_Curso extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Model model = new Model();
-
-            String _codigo = request.getParameter("codigoCF");
-            String _carrera_codigo = request.getParameter("cCF");
-            String _anio = request.getParameter("anioCF");
-            String _ciclo = request.getParameter("cicloCF");
-            String _nombre = request.getParameter("nombreCF");
-            String _creditosS = request.getParameter("numeroCF");
-            String _hsS = request.getParameter("horasCF");
+            
+            String _codigo = request.getParameter("ccf");
+            String _carrera_codigo = request.getParameter("codcf");
+            String _anio = request.getParameter("ancf");
+            String _ciclo = request.getParameter("cicf");
+            String _nombre = request.getParameter("ncf");
+            String _creditosS = request.getParameter("nucf");
+            String _hsS = request.getParameter("hcf");
             int hs = Integer.parseInt(_hsS);
             int credi = Integer.parseInt(_creditosS);
 
-            model.getGestorCurso().actualizarCurso(_codigo, _carrera_codigo, _anio,
-                    _ciclo, _nombre, credi, hs);
+            model.getGestorCurso().actualizarCurso(_codigo, _carrera_codigo, _anio, _ciclo, _nombre, credi, hs);
             response.sendRedirect("Cursos.jsp");
         }
     }

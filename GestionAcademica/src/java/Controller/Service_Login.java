@@ -1,12 +1,12 @@
 package Controller;
 
 import backendga.modelo.Model;
-import backendga.modelo.dao.GestorUsuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Service_Login extends HttpServlet {
 
@@ -27,9 +27,11 @@ public class Service_Login extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
         if (usuarioValido) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", usuario);
             response.sendRedirect("Carreras.jsp");
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("loginError.jsp");
         }
     }
 

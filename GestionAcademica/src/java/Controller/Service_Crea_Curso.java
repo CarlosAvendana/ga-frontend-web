@@ -20,7 +20,7 @@ public class Service_Crea_Curso extends HttpServlet {
             Model model = new Model();
 
             String _codigo = request.getParameter("codigoCF");
-            String _carrera_codigo = request.getParameter("cCF");
+            String _carrera_codigo = request.getParameter("dpc");
             String _anio = request.getParameter("anioCF");
             String _ciclo = request.getParameter("cicloCF");
             String _nombre = request.getParameter("nombreCF");

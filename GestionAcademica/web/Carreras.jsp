@@ -1,11 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="false" %>  
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Carreras</title>
         <link rel="icon" href="Icon/GA1.ico" type="image/png"/>
-
+        <% response.setHeader("cache-control", "no-cache, no-store, must-revalidate");%>   
         <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="bootstrap_table/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="bootstrap_table/dataTables.bootstrap4.min.css"/>
@@ -16,6 +17,15 @@
         <script src="bootstrap_table/dataTables.bootstrap4.min.js"></script>
     </head>
     <body onload="init();" style="background-color:#1b262c; ">
+        <%
+            HttpSession sesion = request.getSession();
+            String usuario;
+            if (sesion.getAttribute("user") == null) {
+                sesion.removeAttribute("user");
+                sesion.invalidate();
+                out.print("<script>location.replace('loginError.jsp') </script>");
+            }
+        %>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
@@ -24,11 +34,15 @@
                             Gestion Academica
                         </div>
                         <div class="card-body bg-dark text-white">
-
-                            <a class="btn btn-primary" href="Cursos.jsp" role="button">Cursos</a>
-                            <span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="resetTitulo()"> Agregar Carrera</span>
-                            <span class="btn btn-primary">Salir</span>
-                            <hr>
+                            <table>
+                                <tr>
+                                    <td>  <a class="btn btn-primary" href="Cursos.jsp" role="button">Cursos</a></td>
+                                    <td><span class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="resetTitulo()"> Agregar Carrera</span> </td>
+                                    <td> <form action="Service_Logout" method="POST">
+                                            <button  type="submit" class="btn btn-primary">Salir</button >
+                                        </form></td>
+                                </tr>
+                            </table><br><br>
                             <div>
                                 <table id="example" class="table table-hover table-dark" style="width:100%;margin: auto; padding-top: 60px;">
                                 </table>
@@ -55,28 +69,26 @@
                         <div class="container">
                             <form action="Service_Crea_Carrera" method="POST" class="was-validated" id="modalForm">
                                 <div class="form-group">
-                                    <label for="uname">Código:</label>
+                                    <label>Código:</label>
                                     <input type="text" class="form-control" placeholder="Código de la carrera" name="codigoCF" id="codigoCF" required>
                                     <div class="valid-feedback">Valido!</div>
                                     <div class="invalid-feedback">Por favor llenar el campo!</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="uname">Nombre: </label>
+                                    <label>Nombre: </label>
                                     <input type="text" class="form-control" placeholder="Nombre de la carrera" name="nombreCF" id="nombreCF" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Por favor llenar el campo.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-check-label">
-                                        <label >Título: </label>
-                                        <select name="tituloCF" class="custom-select" id="tituloCF" required>
-                                            <option value="Diplomado" id="diplomadoID">Diplomado</option>
-                                            <option value="Bachillerato" id="bachilleratoID">Bachillerato</option>
-                                            <option value="Licenciatura" id="licenciaturaID">Licenciatura</option>
-                                            <option value="Maestría" id="maestriaID">Maestría</option>
-                                            <option value="Doctorado" id="doctoradoID">Doctorado</option>
-                                        </select>
-                                    </label>
+                                    <label >Título: </label>
+                                    <select name="tituloCF" class="custom-select" id="tituloCF" required>
+                                        <option value="Diplomado">Diplomado</option>
+                                        <option value="Bachillerato">Bachillerato</option>
+                                        <option value="Licenciatura">Licenciatura</option>
+                                        <option value="Maestria">Maestría</option>
+                                        <option value="Doctorado">Doctorado</option>
+                                    </select>
                                 </div>
                                 <button id="botonAgregar" type="submit" class="btn btn-primary">Agregar</button>
                                 <button type="reset" class="btn btn-primary">Borrar</button>
@@ -89,9 +101,8 @@
         <script type="text/javascript">
 
             function init() {
+
                 let dataSet;
-
-
                 fetch('Service_Lista_Carrera')
                         .then((response) => {
                             return response.json();
@@ -137,8 +148,9 @@
                 $('#modalForm').submit(function () {
                     $(this).attr('action', 'Service_Edita_Carrera');
                     resetTitulo(0);
-
                 });
+
+
             }
 
             function resetTitulo(dato) {
